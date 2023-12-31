@@ -1,0 +1,12 @@
+
+// while(!st.empty()){
+// cout<<st.top()<<endl;
+// st.pop();
+// }
+
+c++ has more potential to take the memory in under control
+it is more closer to memory because of the pointer
+present
+
+
+

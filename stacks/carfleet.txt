@@ -1,0 +1,4 @@
+position->3,5,6,9
+speed->4,4,3,1
+to find when they are going to collide at which point
+# is there any car ahead moving slow
