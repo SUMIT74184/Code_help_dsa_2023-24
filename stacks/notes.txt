@@ -1,0 +1,2 @@
+Notes for the stacks 
+implemetation and the logic
