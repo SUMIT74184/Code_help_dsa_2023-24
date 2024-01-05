@@ -75,8 +75,7 @@ void DeletionInTrie(TrieNode*root,string str){
     DeletionInTrie(root,str.substr(1));
 }//ans=suffix overhere
 void storeString(TrieNode* root, vector<string>& ans, string& input, string& prefix) {
-    // base case
-    if (root->isTerminal == true) {
+    if (root->isTerminal==true) {
         ans.push_back(prefix + input);
     }
 
@@ -84,40 +83,39 @@ void storeString(TrieNode* root, vector<string>& ans, string& input, string& pre
         int index = ch - 'a';
         TrieNode* next = root->children[index];
         if (next != NULL) {
-            // CHILD EXISTS
             input.push_back(ch);
             storeString(next, ans, input, prefix);
-            // backtrack
-            input.pop_back();
+            input.pop_back(); // Backtrack
         }
     }
 }
+
 //we have to reach the last character of our string input
 //but do not return
 //recursion will work untill the
 //backtrack after ans we strore
-void FindPrefixTrieNode(TrieNode* root, string input, vector<string>& ans, string& prefix) {
-    // base case
-    if (input.length() == 0) {
-        TrieNode* lastChar = root; // we need to track the record of the last character
-        storeString(lastChar, ans, input, prefix);
-        return;
-    }
-
-    char ch = input[0];
-    int index = ch - 'a';
-    TrieNode* child;
-    if (root->children[index] != NULL) {
-        child = root->children[index];
-        // CHILD EXISTS
-        input.push_back(ch);
-        FindPrefixTrieNode(child, input.substr(1), ans, prefix);
-        // backtrack
-        // input.pop_back();
-    } else {
-        return;
-    }
+void findPrefixString(TrieNode* root, string input, vector<string>& ans, string &prefix) {
+  //base case
+  if(input.length() == 0) {
+    TrieNode* lastchar = root;
+    storeString(lastchar, ans, input, prefix);
+    return;
+  }
+  char ch = input[0];
+  int index = ch - 'a';
+  TrieNode* child;
+  if(root->children[index] != NULL) {
+    //child present
+    child = root->children[index];
+  }
+  else {
+    return;
+  }
+  //recursive call
+  findPrefixString(child, input.substr(1), ans, prefix);
 }
+
+
 int main(){
 TrieNode*root=new TrieNode('-');
 insertWord(root,"cater");
@@ -138,7 +136,7 @@ insertWord(root,"loki");
 string input="l";
 string prefix=input;
 vector<string>ans;
-FindPrefixTrieNode(root,input,ans,prefix);
+findPrefixString(root,input,ans,prefix);
 for(auto i:ans){
     cout<<i<<" ";
 }
