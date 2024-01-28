@@ -12,7 +12,7 @@ public:
         //direction-1->directed
         if(direction==1){
             adjLst[u].push_back({v,wt});
-        }else{
+        }else{ 
             //u----v
             //u->v
             //v->u
@@ -36,7 +36,9 @@ public:
 
 int main(){
 Graph g;
-g.addEdge(0,1,5,0);
+g.addEdge(0,1,5,0);//the graph direction is always set as 0
+//while the graph weight is given as 5
+//and the toward 0----1 
 g.addEdge(1,2,10,0);
 g.addEdge(1,3,20,0);
 g.addEdge(2,3,50,0);
